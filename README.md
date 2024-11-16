@@ -3,6 +3,8 @@ Git is like a time-machine for your code. It lets you save snapshots, travel bac
 and create alternate universes (branches). Perfect when the intern accidently deletes 
 half the codebase.
 
+Useful Youtube Video: https://www.youtube.com/watch?v=HkdAHXoRtos
+
 ## Git Installation
 ### Windows 
 1. Download Git from [git-scm.com](https://git-scm.com/download/win).
@@ -117,6 +119,6 @@ To fetch and merge changes from the remote repository:
 git pull
 ```
 
-<
+# Contributions :)
 Hello Github!
 
