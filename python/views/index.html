@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chatwa GPT</title>
+</head>
+
+<body>
+  <h1>Welcome, {{current_user.username}}</h1>
+  <textarea id="prompt"></textarea>
+  <button onclick="sendPrompt()">Send</button>
+  <div id="response"></div>
+
+  <h2>Conversation History</h2>
+  {% for conv in conversations %}
+  <p>Prompt: {{ conv.prompt }}</p>
+  <p>Response: {{ conv.response}}</p>
+  {% endfor %}
+
+  <a href="/logout">Logout</a>
+
+  <script>
+    async function sendPrompt() {
+      console.log("Unga")
+      const prompt = document.getElementById("prompt").value;
+      const responseDiv = document.getElementById("response");
+
+      responseDiv.innerText = "Loading..";
+
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({prompt})
+      });
+
+      console.log(response)
+
+      const result = response.json();
+      if (response.ok) {
+        responseDiv.innerText = `Response: ${result.response}`;
+        location.reload();
+      } else {
+        responseDiv.innerText = `Error: ${result.response}`;
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
